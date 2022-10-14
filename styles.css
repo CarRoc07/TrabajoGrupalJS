@@ -9,7 +9,6 @@
   --grad: linear-gradient(to right, #FFA100, #FB103D);
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -24,8 +23,58 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-button {
+/* Header - Hamburger menú*/
+
+._header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1529px;
+  padding: 30px 65px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+  width: 50%;
+}
+
+/* Hero */
+
+._hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1529px;
+  margin: 0 auto;
+}
+
+._hero_title {
+  gap: 25px;
+  width: 50%;
+}
+
+._hero_title h1 {
+  font-size: 75px;
+}
+
+._hero_title h2 {
+  font-size: 55px;
+}
+
+._hero_title button {
   background: var(--grad);
+  color: var(--blanco);
+  margin-top: 34px;
+  padding: 18px;
+  border-radius: 15px;
+  width: 166px;
+  height: 50px;
+  border: none;
 }
 
 a {
