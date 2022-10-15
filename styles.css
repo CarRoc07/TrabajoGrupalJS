@@ -77,6 +77,10 @@ body {
   border: none;
 }
 
+/* Recomendación */
+
+._categorias
+
 a {
   color: var(--blanco);
 }
