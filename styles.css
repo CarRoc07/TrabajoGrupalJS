@@ -17,6 +17,7 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,6 +25,16 @@ body {
   color: var(--blanco);
   font-family: "Montserrat", sans-serif;
 }
+
+a {
+  color: var(--blanco);
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
 
 /* Header - Hamburger menú*/
 
@@ -46,10 +57,6 @@ body {
 
 .carrito {
   width: 35px;
-}
-
-a {
-  color: var(--blanco);
 }
 
 /* Hero */
@@ -83,9 +90,11 @@ a {
   font-size: 23px
 }
 
-._hero_title button {
+._hero_title a {
   background: var(--grad);
   color: var(--blanco);
+  display: inline-block;
+  text-align: center;
   margin-top: 34px;
   padding: 18px;
   border-radius: 15px;
