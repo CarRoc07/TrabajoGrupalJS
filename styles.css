@@ -118,7 +118,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 10px 50px;
+  padding: 0px 50px;
 }
 
 ._recomendacion_container_pizza {
@@ -133,14 +133,24 @@ a {
   box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
 }
 
-._recomendacion_container_pizza p {
+._recomendacion_container_pizza div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+._recomendacion_container_pizza p, ._results_container_output_1 p {
   opacity: 0.3;
 }
 
-._recomendacion_container_pizza p {
-  opacity: 0.3;
+._recomendacion_container_pizza h4, ._results_container_output_2 h5 {
+  font-weight: 700;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 20px;
 }
-
 
 ._recomendacion_container_pizza_img {
   width: 80px;
@@ -169,7 +179,7 @@ a {
 }
 
 ._categorias h3 {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 22px;
   margin-left: 35px;
 }
@@ -192,6 +202,11 @@ a {
   padding: 30px;
   width: 155px;
   height: 190px;
+  cursor: pointer;
+}
+
+._categorias_container_opcion:hover {
+  background: var(--gris);
 }
 
 .active {
@@ -225,7 +240,7 @@ a {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   padding: 50px;
-  gap: 40px;
+  gap: 25px;
 }
 
 ._results_container_output {
@@ -250,11 +265,33 @@ a {
 
 ._results_container_output_2 {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 40px;
-  justify-content: ;
+  gap: 115px;
+}
 
+/* Footer */
+.footer {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px;
+}
+
+.footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer ul li {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footer p {
+  margin-top: 40px;
+  font-size: 20px;
 }
 
 /* Carrito */
