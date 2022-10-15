@@ -80,3 +80,7 @@ body {
 a {
   color: var(--blanco);
 }
+
+.carrito {
+  width: 35px;
+}
