@@ -55,6 +55,10 @@ button {
   width: 50%;
 }
 
+.navbar span {
+  font-size: .7rem;
+}
+
 .navbar i{
   color: #89560B;
   cursor: pointer;
@@ -62,9 +66,15 @@ button {
 
 .navbar i:hover{
   color: var(--amarillo);
-  ;
 }
 
+.menu-active {
+  color: var(--amarillo);
+}
+
+#home-icon {
+  color: var(--amarillo);
+}
 
 
 /* .carrito {
@@ -190,6 +200,10 @@ button {
   cursor: pointer;
 }
 
+._recomendacion_container_pizza button:hover, ._results_container_output_2 button:hover {
+  background: var(--amarillo)
+}
+
 /* Categorias */
 
 ._categorias {
@@ -308,13 +322,17 @@ button {
 }
 
 .footer ul li {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
+}
+
+.footer a:hover {
+  color: var(--amarillo);
 }
 
 .footer p {
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 /* Carrito */
