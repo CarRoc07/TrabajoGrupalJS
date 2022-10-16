@@ -55,9 +55,23 @@ button {
   width: 50%;
 }
 
-.carrito {
-  width: 35px;
+.navbar i{
+  color: #89560B;
+  cursor: pointer;
 }
+
+.navbar i:hover{
+  color: var(--amarillo);
+  ;
+}
+
+
+
+/* .carrito {
+  width: 35px;
+} */
+
+
 
 /* Hero */
 
