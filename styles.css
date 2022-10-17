@@ -35,6 +35,12 @@ button {
   font-weight: 600;
 }
 
+main {
+  max-width: var(--maxWidth);
+  position: relative;
+  margin: 0 auto;
+}
+
 
 /* Header - Hamburger menú*/
 
@@ -154,7 +160,7 @@ button {
   padding: 0px 50px;
 }
 
-._recomendacion_container_pizza {
+._recomendacion_container_pizza, ._carrito_container_products_product {
   display: flex;
   align-items: center;
   gap: 25px;
@@ -336,4 +342,38 @@ button {
 }
 
 /* Carrito */
+
+._carrito {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 890px;
+  background: var(--negro);
+  border-radius: 15px;
+  gap: 25px;
+  padding: 25px;
+}
+
+._carrito_btnClose {
+  width: 25px;
+  height: 25px;
+  background: var(--grad);
+  border-radius: 4px;
+  color: var(--blanco);
+  border: none;
+}
+
+._carrito_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+._carrito_container_btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
 
