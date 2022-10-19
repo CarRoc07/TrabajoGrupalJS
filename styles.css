@@ -41,7 +41,6 @@ main {
     margin: 0 auto;
 }
 
-
 /* Header - Hamburger menú*/
 
 header {
@@ -87,10 +86,21 @@ header {
     color: var(--amarillo);
 }
 
+.overlay {
+    position: absolute;
+    height: 200%;
+    width: 100%;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: none;
+}
 
-/* .carrito {
-  width: 35px;
-} */
+.show-overlay {
+    display: block;
+}
 
 
 /* Hero */
@@ -362,7 +372,6 @@ header {
 /* Carrito */
 
 ._carrito {
-    display: flex;
     flex-direction: column;
     width: 450px;
     background: var(--negro);
@@ -373,8 +382,9 @@ header {
     right: 0;
     top: 0;
     z-index: 20;
-    transform: translate(100%);
+    transform: translateY(-100%);
     transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
+    display: flex;
 }
 
 ._carrito_btnClose {
@@ -510,6 +520,7 @@ header {
 }
 
 .open-cart {
-    transform: translate(0%);
+    transform: translateY(0%);
     transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
+    display: flex;
 }

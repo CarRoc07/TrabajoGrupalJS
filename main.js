@@ -13,13 +13,17 @@
 // Carrito
 
 const btnOpen = document.querySelector("._carrito_btnOpen");
-const btnClose = document.querySelector("._carrito_btnClose");
-const cart = document.querySelector("._carrito");
+    btnClose = document.querySelector("._carrito_btnClose");
+    btnClose2 = document.querySelector("._carrito_container_end_close");
+    cart = document.querySelector("._carrito");
+    overlay = document.querySelector(".overlay");
 
 const openAndCloseCart = () => {
     cart.classList.toggle("open-cart");
+    overlay.classList.toggle("show-overlay");
 };
 
 
 btnOpen.addEventListener("click", openAndCloseCart);
 btnClose.addEventListener("click", openAndCloseCart);
+btnClose2.addEventListener("click", openAndCloseCart);
