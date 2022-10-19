@@ -14,11 +14,16 @@
 
 const btnOpen = document.querySelector("._carrito_btnOpen");
 const btnClose = document.querySelector("._carrito_btnClose");
+const overlay = document.querySelector(".overlay");
 const cart = document.querySelector("._carrito");
 /* carrito */
 
 const openAndCloseCart = () => {
-    cart.classList.toggle("open-cart");
+    if (cart.style.display === "none") {
+        cart.style.display = "block";
+    } else {
+        cart.style.display = "none";
+    }
 };
 
 

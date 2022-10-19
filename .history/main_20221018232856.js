@@ -18,7 +18,12 @@ const cart = document.querySelector("._carrito");
 /* carrito */
 
 const openAndCloseCart = () => {
-    cart.classList.toggle("open-cart");
+    if (cart.style.display === "none") {
+        cart.style.display = "block";
+    } else {
+        cart.style.display = "none";
+        cart.classList.toggle("open-cart");
+    }
 };
 
 

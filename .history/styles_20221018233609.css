@@ -373,7 +373,7 @@ header {
     right: 0;
     top: 0;
     z-index: 20;
-    transform: translate(100%);
+    transform: translate(0%);
     transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }
 
@@ -507,9 +507,4 @@ header {
     opacity: 0.3;
     letter-spacing: 0.5px;
     line-height: 15px;
-}
-
-.open-cart {
-    transform: translate(0%);
-    transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }

@@ -373,8 +373,6 @@ header {
     right: 0;
     top: 0;
     z-index: 20;
-    transform: translate(100%);
-    transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }
 
 ._carrito_btnClose {
@@ -510,6 +508,6 @@ header {
 }
 
 .open-cart {
-    transform: translate(0%);
+    transform: translate(200%);
     transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }

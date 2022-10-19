@@ -19,6 +19,7 @@ const cart = document.querySelector("._carrito");
 
 const openAndCloseCart = () => {
     cart.classList.toggle("open-cart");
+
 };
 
 
