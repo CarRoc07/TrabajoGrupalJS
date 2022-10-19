@@ -9,7 +9,7 @@
 //const _btn_categorias
 //const _btn_agregar
 //const _cards_container
-
+const showResults = document.querySelector("_results");
 const popularBtn = document.getElementById("_popular_category");
 const pizzaBtn = document.getElementById("_pizza_category");
 const burgerBtn = document.getElementById("_burger_category");
