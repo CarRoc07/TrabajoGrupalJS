@@ -9,16 +9,18 @@
 //const _btn_categorias
 //const _btn_agregar
 
-const showResults = document.querySelector("_results");
-const popularBtn = document.getElementById("_popular_category");
-const pizzaBtn = document.getElementById("_pizza_category");
-const burgerBtn = document.getElementById("_burger_category");
-const friesBtn = document.getElementById("_fries_category");
-const burritoBtn = document.getElementById("_burrito_category");
-const tacoBtn = document.getElementById("_taco_category");
-const smoothieBtn = document.getElementById("_smoothie_category");
+const showResults = document.querySelector("._results_container");
+const categoryContainer = document.querySelector("._categorias_container");
+let categoryContainerOpcion = document.querySelectorAll("._categorias_container_opcion");
+// const popularBtn = document.getElementById("_popular_category");
+// const pizzaBtn = document.getElementById("_pizza_category");
+// const burgerBtn = document.getElementById("_burger_category");
+// const friesBtn = document.getElementById("_fries_category");
+// const burritoBtn = document.getElementById("_burrito_category");
+// const tacoBtn = document.getElementById("_taco_category");
+// const smoothieBtn = document.getElementById("_smoothie_category");
+// No necesarios
 
-// Carrito
 
 const btnOpen = document.querySelector("._carrito_btnOpen");
 btnClose = document.querySelector("._carrito_btnClose");
@@ -31,18 +33,14 @@ const openAndCloseCart = () => {
     overlay.classList.toggle("show-overlay");
 };
 
-
 btnOpen.addEventListener("click", openAndCloseCart);
 btnClose.addEventListener("click", openAndCloseCart);
 btnClose2.addEventListener("click", openAndCloseCart);
 
-
-
 // Renderizado cartas productos
 
-
-
 const renderProduct = (product) => {
+
     const {id, name, precio, comentario, productImg} = product;
 
     return `
@@ -64,37 +62,54 @@ const renderProduct = (product) => {
     `;
 };
 
+// Funcion que renderiza seccion popular, Cuando carga la page o cuando clickeo populares
 
-//no se si esta bien esta funcion:
-
-const renderPopular = (e) =>{
-    (e).forEach((producto)=>{
-        if(producto.popular===true){
-            renderProduct(producto); 
+const renderPopular = (arr) => {
+    arr.forEach( (producto) => {
+        if(producto.popular === true){
+            showResults.innerHTML += renderProduct(producto); 
         }
     })
 };
 
-///
+// Funcion que recibe tipo de producto y los renderiza
 
-//revisar con lógica de filtros:
-
-const renderFilteredProducts = (tipo) =>{
+const renderFilteredProducts = (tipo) => {
     const productsList =  _array_de_productos.filter(
         (producto) => producto.tipo === tipo
     );
     showResults.innerHTML = productsList.map(renderProduct).join("");
-
 };
 
-///
+// Funcion para limpiar clase "active"
 
-const renderProducts = (category = undefined) => {
-    if (!category) {
+const quitClassActive = () => {
+    for(let i = 0; i < categoryContainerOpcion.length; i++){
+        categoryContainerOpcion[i].classList.remove("active");
+    }
+}
+
+// Funcion que manda a filtrar categoria de productos recibida
+
+const renderProducts = (e) => {
+
+    if(!e.target.classList.contains("_categorias_container_opcion")) return;
+
+    showResults.innerHTML = "";
+    quitClassActive();
+
+    if (e.target.id === "popular") {
         renderPopular(_array_de_productos);
+        e.target.classList.add("active");
         return;
     }
-    renderFilteredProducts(category);
+
+    renderFilteredProducts(e.target.id);
+    e.target.classList.add("active");
 };
+
+document.addEventListener("DOMcontentLoaded", renderPopular(_array_de_productos));
+categoryContainer.addEventListener("click", renderProducts)
+
 
 

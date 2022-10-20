@@ -323,6 +323,13 @@ header {
     gap: 12px;
 }
 
+._results_container_output img{
+    width: 240px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
 ._results_container_output_1 {
     width: 85%;
     display: flex;
