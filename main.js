@@ -12,15 +12,7 @@
 const showResults = document.querySelector("._results_container");
 const categoryContainer = document.querySelector("._categorias_container");
 let categoryContainerOpcion = document.querySelectorAll("._categorias_container_opcion");
-// const popularBtn = document.getElementById("_popular_category");
-// const pizzaBtn = document.getElementById("_pizza_category");
-// const burgerBtn = document.getElementById("_burger_category");
-// const friesBtn = document.getElementById("_fries_category");
-// const burritoBtn = document.getElementById("_burrito_category");
-// const tacoBtn = document.getElementById("_taco_category");
-// const smoothieBtn = document.getElementById("_smoothie_category");
-// No necesarios
-
+let resultsTitle = document.querySelector("._results_title");
 
 const btnOpen = document.querySelector("._carrito_btnOpen");
 btnClose = document.querySelector("._carrito_btnClose");
@@ -93,19 +85,22 @@ const quitClassActive = () => {
 
 const renderProducts = (e) => {
 
-    if(!e.target.classList.contains("_categorias_container_opcion")) return;
+    if(!e.target.parentNode.classList.contains("_categorias_container_opcion")) return;
 
+    resultsTitle.innerText = "";
     showResults.innerHTML = "";
     quitClassActive();
 
-    if (e.target.id === "popular") {
+    if (e.target.parentNode.id === "popular") {
+        resultsTitle.innerText = "Los más populares";
         renderPopular(_array_de_productos);
-        e.target.classList.add("active");
+        e.target.parentNode.classList.add("active");
         return;
     }
-
-    renderFilteredProducts(e.target.id);
-    e.target.classList.add("active");
+    
+    resultsTitle.innerText = `${e.target.parentNode.id.toUpperCase()}`
+    renderFilteredProducts(e.target.parentNode.id);
+    e.target.parentNode.classList.add("active");
 };
 
 document.addEventListener("DOMcontentLoaded", renderPopular(_array_de_productos));

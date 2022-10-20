@@ -244,6 +244,14 @@ header {
     gap: 30px;
 }
 
+.ejecutable {
+    width: 155px;
+    height: 190px;
+    z-index: 300;
+    position: absolute;
+    border-radius: 15px;
+}
+
 ._categorias h3 {
     font-weight: 700;
     font-size: 22px;
