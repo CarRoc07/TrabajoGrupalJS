@@ -9,15 +9,22 @@
 //const _btn_categorias
 //const _btn_agregar
 
-const results = document.querySelector("._results");
+const showResults = document.querySelector("_results");
+const popularBtn = document.getElementById("_popular_category");
+const pizzaBtn = document.getElementById("_pizza_category");
+const burgerBtn = document.getElementById("_burger_category");
+const friesBtn = document.getElementById("_fries_category");
+const burritoBtn = document.getElementById("_burrito_category");
+const tacoBtn = document.getElementById("_taco_category");
+const smoothieBtn = document.getElementById("_smoothie_category");
 
 // Carrito
 
 const btnOpen = document.querySelector("._carrito_btnOpen");
-    btnClose = document.querySelector("._carrito_btnClose");
-    btnClose2 = document.querySelector("._carrito_container_end_close");
-    cart = document.querySelector("._carrito");
-    overlay = document.querySelector(".overlay");
+btnClose = document.querySelector("._carrito_btnClose");
+btnClose2 = document.querySelector("._carrito_container_end_close");
+cart = document.querySelector("._carrito");
+overlay = document.querySelector(".overlay");
 
 const openAndCloseCart = () => {
     cart.classList.toggle("open-cart");
@@ -31,7 +38,9 @@ btnClose2.addEventListener("click", openAndCloseCart);
 
 
 
-// Render cartas productos
+// Renderizado cartas productos
+
+
 
 const renderProduct = (product) => {
     const {id, name, precio, comentario, productImg} = product;
@@ -68,6 +77,18 @@ const renderPopular = (e) =>{
 
 ///
 
+//revisar con lógica de filtros:
+
+const renderFilteredProducts = (tipo) =>{
+    const productsList =  _array_de_productos.filter(
+        (producto) => producto.tipo === tipo
+    );
+    showResults.innerHTML = productsList.map(renderProduct).join("");
+
+};
+
+///
+
 const renderProducts = (category = undefined) => {
     if (!category) {
         renderPopular(_array_de_productos);
@@ -75,4 +96,5 @@ const renderProducts = (category = undefined) => {
     }
     renderFilteredProducts(category);
 };
+
 
