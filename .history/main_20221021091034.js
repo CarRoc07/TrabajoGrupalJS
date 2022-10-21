@@ -143,8 +143,7 @@ function ready() {
 function addToCartClicked(event) {
     var button = event.target
     var shopItem = button.parentElement
-    if (shopItem.getElementsByClassName('_titulo_producto')[0] == undefined) shopItem = button.parentElement.parentElement
-
+    console.log(shopItem.getElementsByClassName('_titulo_producto')[0])
 
     var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
     var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText

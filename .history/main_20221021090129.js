@@ -143,9 +143,8 @@ function ready() {
 function addToCartClicked(event) {
     var button = event.target
     var shopItem = button.parentElement
-    if (shopItem.getElementsByClassName('_titulo_producto')[0] == undefined) shopItem = button.parentElement.parentElement
-
-
+    console.log(parent.parentElement)
+    console.log(shopItem.getElementsByClassName('_recomendacion_container_pizza_img'))
     var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
     var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText
     var price = shopItem.getElementsByClassName('_precio_producto')[0].innerText
