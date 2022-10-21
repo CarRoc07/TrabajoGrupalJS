@@ -142,7 +142,7 @@ function ready() {
 
 function addToCartClicked(event) {
     var button = event.target
-    var shopItem = button.parentElement
+    var shopItem = button.parentElement.parentElement
     console.log(shopItem.getElementsByClassName('_recomendacion_container_pizza_img'))
     var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
     var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText
@@ -158,12 +158,7 @@ function addItemToCart(title, price, imageSrc, descripcion) {
 
     var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
-    for (var i = 0; i < cartItemNames.length; i++) {
-        if (cartItemNames[i].innerText == title) {
-            alert('This item is already added to the cart')
-            return
-        }
-    }
+
     var cartRowContents = `
     <div class="_carrito_container_products_product">
                         <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
