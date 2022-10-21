@@ -132,7 +132,7 @@ if (document.readyState == 'loading') {
 
 //funcion boton agregar 
 function ready() {
-    var addToCartButtons = document.getElementsByClassName('btnAddProduct')
+    var addToCartButtons = document.getElementsByClassName('btnAddProductCart')
 
     for (var i = 0; i < addToCartButtons.length; i++) {
         var button = addToCartButtons[i]

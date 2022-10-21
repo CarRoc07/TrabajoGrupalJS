@@ -132,7 +132,7 @@ if (document.readyState == 'loading') {
 
 //funcion boton agregar 
 function ready() {
-    var addToCartButtons = document.getElementsByClassName('btnAddProduct')
+    var addToCartButtons = document.getElementsByClassName('_btn_agregar')
 
     for (var i = 0; i < addToCartButtons.length; i++) {
         var button = addToCartButtons[i]
@@ -166,19 +166,18 @@ function addItemToCart(title, price, imageSrc, descripcion) {
     }
     var cartRowContents = `
     <div class="_carrito_container_products_product">
-                        <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
-                        <div>
-                            <h5  class="cart-item-title">${title}</h5>
-                            <p>${descripcion}</p>
-                            <h4>${price}</h4>
-                        </div>
-                        <div class="_carrito_container_btns">
-                            <button class="btnRemoveProductCart">-</button>
-                            <p>1</p>
-                            <button class="btnAddProductCart">+</button>
-                        </div>
-                    </div>
+    <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
+    <div>
+        <h5 class="cart-item-title">${title}</h5>
+        <p>${descripcion}</p>
+        <h4>${price}</h4>
+    </div>
+    <div class="_carrito_container_btns">
+        <button class="btnRemoveProductCart">-</button>
+        <p>1</p>
+        <button class="btnAddProductCart">+</button>
+    </div>
+    </div>
         `
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
-}

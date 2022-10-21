@@ -25,9 +25,10 @@ const openAndCloseCart = () => {
     overlay.classList.toggle("show-overlay");
 };
 
-const closeOnScroll = () => {
-    if (!cart.classList.contains("open-cart"))
-        return;
+const closeOnScroll = () =>{
+    if (!cart.classList.contains("open-cart")
+    )
+    return;
     cart.classList.remove("open-cart")
     overlay.classList.remove("show-overlay")
 };
@@ -41,7 +42,7 @@ window.addEventListener("scroll", closeOnScroll);
 
 const renderProduct = (product) => {
 
-    const { id, name, precio, comentario, productImg } = product;
+    const {id, name, precio, comentario, productImg} = product;
 
     return `
     <div class="_results_container_output">
@@ -65,9 +66,9 @@ const renderProduct = (product) => {
 // Funcion que renderiza seccion popular, Cuando carga la page o cuando clickeo populares
 
 const renderPopular = (arr) => {
-    arr.forEach((producto) => {
-        if (producto.popular === true) {
-            showResults.innerHTML += renderProduct(producto);
+    arr.forEach( (producto) => {
+        if(producto.popular === true){
+            showResults.innerHTML += renderProduct(producto); 
         }
     })
 };
@@ -81,10 +82,10 @@ const renderError = (msg) => {
 // Funcion que recibe tipo de producto y los renderiza
 
 const renderFilteredProducts = (tipo) => {
-    const productsList = _array_de_productos.filter(
+    const productsList =  _array_de_productos.filter(
         (producto) => producto.tipo === tipo
     );
-    if (!productsList.length) {
+    if(!productsList.length){
         renderError(`No hay stock de ${tipo}`);
         return;
     }
@@ -94,7 +95,7 @@ const renderFilteredProducts = (tipo) => {
 // Funcion para limpiar clase "active"
 
 const quitClassActive = () => {
-    for (let i = 0; i < categoryContainerOpcion.length; i++) {
+    for(let i = 0; i < categoryContainerOpcion.length; i++){
         categoryContainerOpcion[i].classList.remove("active");
     }
 }
@@ -103,7 +104,7 @@ const quitClassActive = () => {
 
 const renderProducts = (e) => {
 
-    if (!e.target.parentNode.classList.contains("_categorias_container_opcion")) return;
+    if(!e.target.parentNode.classList.contains("_categorias_container_opcion")) return;
 
     resultsTitle.innerText = "";
     showResults.innerHTML = "";
@@ -115,7 +116,7 @@ const renderProducts = (e) => {
         e.target.parentNode.classList.add("active");
         return;
     }
-
+    
     resultsTitle.innerText = `${e.target.parentNode.id.toUpperCase()}`
     renderFilteredProducts(e.target.parentNode.id);
     e.target.parentNode.classList.add("active");
@@ -124,61 +125,5 @@ const renderProducts = (e) => {
 document.addEventListener("DOMcontentLoaded", renderPopular(_array_de_productos));
 categoryContainer.addEventListener("click", renderProducts)
 
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready()
-}
 
-//funcion boton agregar 
-function ready() {
-    var addToCartButtons = document.getElementsByClassName('btnAddProduct')
 
-    for (var i = 0; i < addToCartButtons.length; i++) {
-        var button = addToCartButtons[i]
-        button.addEventListener('click', addToCartClicked)
-    }
-}
-
-function addToCartClicked(event) {
-    var button = event.target
-    var shopItem = button.parentElement
-    console.log(shopItem.getElementsByClassName('_recomendacion_container_pizza_img'))
-    var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
-    var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText
-    var price = shopItem.getElementsByClassName('_precio_producto')[0].innerText
-    var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].attributes['src'].value
-
-    addItemToCart(title, price, imageSrc, descripcion)
-}
-
-function addItemToCart(title, price, imageSrc, descripcion) {
-    var cartRow = document.createElement('div')
-    cartRow.classList.add('cart-row')
-
-    var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
-    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
-    for (var i = 0; i < cartItemNames.length; i++) {
-        if (cartItemNames[i].innerText == title) {
-            alert('This item is already added to the cart')
-            return
-        }
-    }
-    var cartRowContents = `
-    <div class="_carrito_container_products_product">
-                        <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
-                        <div>
-                            <h5  class="cart-item-title">${title}</h5>
-                            <p>${descripcion}</p>
-                            <h4>${price}</h4>
-                        </div>
-                        <div class="_carrito_container_btns">
-                            <button class="btnRemoveProductCart">-</button>
-                            <p>1</p>
-                            <button class="btnAddProductCart">+</button>
-                        </div>
-                    </div>
-        `
-    cartRow.innerHTML = cartRowContents
-    cartItems.append(cartRow)
-}
