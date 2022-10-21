@@ -25,9 +25,18 @@ const openAndCloseCart = () => {
     overlay.classList.toggle("show-overlay");
 };
 
+const closeOnScroll = () =>{
+    if (!cart.classList.contains("open-cart")
+    )
+    return;
+    cart.classList.remove("open-cart")
+    overlay.classList.remove("show-overlay")
+};
+
 btnOpen.addEventListener("click", openAndCloseCart);
 btnClose.addEventListener("click", openAndCloseCart);
 btnClose2.addEventListener("click", openAndCloseCart);
+window.addEventListener("scroll", closeOnScroll);
 
 // Renderizado cartas productos
 
