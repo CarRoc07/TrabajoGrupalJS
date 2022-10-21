@@ -45,7 +45,7 @@ const renderProduct = (product) => {
 
     return `
     <div class="_results_container_output">
-        <img class="_recomendacion_container_pizza_img"  src=${productImg} alt=${name} />
+        <img  src=${productImg} alt=${name} />
         <div class="_results_container_output_1">
             <h4 class="_titulo_producto">${name}</h4>
             <p class="_descripcion_producto">${comentario}</p>

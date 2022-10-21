@@ -45,7 +45,7 @@ const renderProduct = (product) => {
 
     return `
     <div class="_results_container_output">
-        <img class="_recomendacion_container_pizza_img"  src=${productImg} alt=${name} />
+        <img  src=${productImg} alt=${name} />
         <div class="_results_container_output_1">
             <h4 class="_titulo_producto">${name}</h4>
             <p class="_descripcion_producto">${comentario}</p>
@@ -142,12 +142,12 @@ function ready() {
 
 function addToCartClicked(event) {
     var button = event.target
-    var shopItem = button.parentElement.parentElement
+    var shopItem = button.parentElement
     console.log(shopItem.getElementsByClassName('_recomendacion_container_pizza_img'))
     var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
     var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText
     var price = shopItem.getElementsByClassName('_precio_producto')[0].innerText
-    var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src
+    var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].attributes['src'].value
 
     addItemToCart(title, price, imageSrc, descripcion)
 }
