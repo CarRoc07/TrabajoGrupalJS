@@ -48,7 +48,7 @@ const renderProduct = (product) => {
         data-id='${id}'
         data-name='${name}'
         data-precio='${precio}'
-        data-img='${productImg}' >Agregar</button>
+        data-img='${productImg}'>Agregar</button>
        </div>
     </div>   
     `;
@@ -64,12 +64,22 @@ const renderPopular = (arr) => {
     })
 };
 
+// Funcion para renderizar Error
+
+const renderError = (msg) => {
+    showResults.innerHTML = `<h2 class="msg_error">${msg}</h2>`
+}
+
 // Funcion que recibe tipo de producto y los renderiza
 
 const renderFilteredProducts = (tipo) => {
     const productsList =  _array_de_productos.filter(
         (producto) => producto.tipo === tipo
     );
+    if(!productsList.length){
+        renderError(`No hay stock de ${tipo}`);
+        return;
+    }
     showResults.innerHTML = productsList.map(renderProduct).join("");
 };
 
