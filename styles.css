@@ -213,6 +213,7 @@ header {
 
 ._recomendacion_container_pizza_img {
     width: 80px;
+    border-radius: 16px;
 }
 
 ._recomendacion_container_pizza button,
