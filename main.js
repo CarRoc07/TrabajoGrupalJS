@@ -154,16 +154,27 @@ function addToCartClicked(event) {
     addItemToCart(title, price, imageSrc, descripcion)
 }
 
+
 function addItemToCart(title, price, imageSrc, descripcion) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
 
+
     var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    var cartItemCuantity = cartItems.getElementsByClassName('cantidad')
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
-            alert('This item is already added to the cart')
-            return
+            alert(`Se sumó otro ${title}`)
+
+            // Funcion que suma cantidad al elegir el mismo elemento
+
+            const actualCuantity = cartItemCuantity[i].getAttribute('value');
+            const sumar = Number(actualCuantity) + 1
+            console.log(actualCuantity);
+            cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
+            return cartItemCuantity += 1
+
         }
     }
     var cartRowContents = `
@@ -176,7 +187,7 @@ function addItemToCart(title, price, imageSrc, descripcion) {
                         </div>
                         <div class="_carrito_container_btns">
                             <button class="btnRemoveProductCart">-</button>
-                            <p>1</p>
+                            <input type="number" class="cantidad" value="1">
                             <button class="btnAddProductCart">+</button>
                         </div>
                     </div>
