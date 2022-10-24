@@ -41,6 +41,7 @@ main {
     margin: 0 auto;
 }
 
+
 /* Header - Hamburger menú*/
 
 header {
@@ -110,7 +111,6 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    max-width: var(--maxWidth);
     margin: 0 auto;
     padding: 30px;
 }
@@ -169,15 +169,16 @@ header {
 }
 
 ._recomendacion_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     padding: 0px 50px;
 }
 
 ._recomendacion_container_pizza,
 ._carrito_container_products_product {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     gap: 25px;
     flex-direction: row;
@@ -186,6 +187,7 @@ header {
     background: var(--negro);
     padding: 20px 15px;
     box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
+    min-width: 290px;
 }
 
 ._recomendacion_container_pizza div {
@@ -233,6 +235,11 @@ header {
     background: var(--amarillo)
 }
 
+.btnAddProduct {
+    position: relative;
+    left: 1%;
+}
+
 
 /* Categorias */
 
@@ -260,10 +267,9 @@ header {
 }
 
 ._categorias_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
 }
 
 ._categorias_container_opcion {
@@ -278,6 +284,7 @@ header {
     width: 155px;
     height: 190px;
     cursor: pointer;
+    margin: 20px;
 }
 
 ._categorias_container_opcion:hover {
@@ -313,8 +320,7 @@ header {
 
 ._results_container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     padding: 50px;
     gap: 25px;
 }
@@ -325,14 +331,14 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--negro);
-    width: 290px;
+    width: auto;
     height: 220px;
     box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
     border-radius: 15px;
     gap: 12px;
 }
 
-._results_container_output img{
+._results_container_output img {
     width: 240px;
     height: 100px;
     object-fit: cover;

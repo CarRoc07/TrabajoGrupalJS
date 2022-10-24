@@ -13,12 +13,12 @@ const showResults = document.querySelector("._results_container");
 const categoryContainer = document.querySelector("._categorias_container");
 let categoryContainerOpcion = document.querySelectorAll("._categorias_container_opcion");
 let resultsTitle = document.querySelector("._results_title");
-
 const btnOpen = document.querySelector("._carrito_btnOpen");
-btnClose = document.querySelector("._carrito_btnClose");
-btnClose2 = document.querySelector("._carrito_container_end_close");
-cart = document.querySelector("._carrito");
-overlay = document.querySelector(".overlay");
+const btnClose = document.querySelector("._carrito_btnClose");
+const btnClose2 = document.querySelector("._carrito_container_end_close");
+const cart = document.querySelector("._carrito");
+const overlay = document.querySelector(".overlay");
+
 
 const openAndCloseCart = () => {
     cart.classList.toggle("open-cart");
@@ -165,15 +165,14 @@ function addItemToCart(title, price, imageSrc, descripcion) {
     var cartItemCuantity = cartItems.getElementsByClassName('cantidad')
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
-            alert(`Se sumó otro ${title}`)
+            alert(`Se sumó otro ${title} al carrito`)
 
             // Funcion que suma cantidad al elegir el mismo elemento
 
             const actualCuantity = cartItemCuantity[i].getAttribute('value');
             const sumar = Number(actualCuantity) + 1
-            console.log(actualCuantity);
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
-            return cartItemCuantity += 1
+            return
 
         }
     }
@@ -194,4 +193,9 @@ function addItemToCart(title, price, imageSrc, descripcion) {
         `
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
-}
+};
+
+const handelMinusBtn = (title) => {
+    const existingCartProduct = cart.find(item => item.title == title)
+
+};

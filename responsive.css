@@ -1,0 +1,11 @@
+@media screen and (max-width:767px) {
+    ._hero_img {
+        display: none;
+    }
+    ._hero_title {
+        gap: 25px;
+        width: 90%;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width: 1023px) {}
