@@ -167,6 +167,7 @@ header {
     font-weight: 500;
     font-size: 22px;
     margin-left: 35px;
+    margin-bottom: 20px;
 }
 
 ._recomendacion_container {
@@ -183,7 +184,7 @@ header {
     align-items: center;
     gap: 25px;
     flex-direction: row;
-    margin: 30px 0;
+    margin: 5px 0;
     border-radius: 15px;
     background: var(--negro);
     padding: 20px 15px;
@@ -290,7 +291,7 @@ header {
     width: 155px;
     height: 190px;
     cursor: pointer;
-    margin: 20px;
+    margin: 5px;
 }
 
 ._categorias_container_opcion:hover {
@@ -575,4 +576,31 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.modalAdd1,
+.modalAdd2 {
+    display: flex;
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    background: var(--amarillo);
+    color: var(--oscuro);
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    transition: .8s;
+    font-size: 20px;
+}
+
+.modalAdd2 span,
+.modalAdd1 span {
+    font-weight: bolder;
+    margin: 0 3px;
+}
+
+.showModal {
+    transform: translateY(-100%);
+    transition: .8s;
 }

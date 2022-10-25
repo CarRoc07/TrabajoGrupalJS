@@ -158,20 +158,25 @@ function addToCartClicked(event) {
 function addItemToCart(title, price, imageSrc, descripcion) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
+    const removeClass1 = () => modalAdd1.classList.remove("showModal");
 
 
+    const modalAdd1 = document.querySelector(".modalAdd1");
+    const modalAdd2 = document.querySelector(".modalAdd2");
     var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     var cartItemCuantity = cartItems.getElementsByClassName('cantidad')
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
-            alert(`Se sumó otro ${title} al carrito`)
 
             // Funcion que suma cantidad al elegir el mismo elemento
-
+            const removeClass2 = () => modalAdd2.classList.remove("showModal");
             const actualCuantity = cartItemCuantity[i].getAttribute('value');
             const sumar = Number(actualCuantity) + 1
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
+            modalAdd2.classList.add("showModal");
+            modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
+            setTimeout(removeClass2, 2000);
             return
 
         }
@@ -193,9 +198,9 @@ function addItemToCart(title, price, imageSrc, descripcion) {
         `
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
-};
+    modalAdd1.classList.add("showModal");
+    modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`
 
-const handelMinusBtn = (title) => {
-    const existingCartProduct = cart.find(item => item.title == title)
+    setTimeout(removeClass1, 2000);
 
 };
