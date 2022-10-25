@@ -136,26 +136,50 @@ if (document.readyState == 'loading') {
 
 //funcion boton agregar 
 function ready() {
-    var addToCartButtons = document.getElementsByClassName('btnAddProduct')
+    var addToCartButtons = document.getElementsByClassName('btnAddProduct');
 
-    for (var i = 0; i < addToCartButtons.length; i++) {
-        var button = addToCartButtons[i]
-        button.addEventListener('click', addToCartClicked)
+    for (let i = 0; i < addToCartButtons.length; i++) {
+        var button = addToCartButtons[i];
+        button.addEventListener('click', addToCartClicked);
     }
 }
 
 function addToCartClicked(event) {
-    var button = event.target
-    var shopItem = button.parentElement
-    if (shopItem.getElementsByClassName('_titulo_producto')[0] == undefined) shopItem = button.parentElement.parentElement
+    var button = event.target;
+    var shopItem = button.parentElement;
+    if (shopItem.getElementsByClassName('_titulo_producto')[0] == undefined) shopItem = button.parentElement.parentElement;
 
 
-    var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText
-    var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText
-    var price = shopItem.getElementsByClassName('_precio_producto')[0].innerText
-    var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src
+    var title = shopItem.getElementsByClassName('_titulo_producto')[0].innerText;
+    var descripcion = shopItem.getElementsByClassName('_descripcion_producto')[0].innerText;
+    var price = shopItem.getElementsByClassName('_precio_producto')[0].innerText;
+    var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src;
 
-    addItemToCart(title, price, imageSrc, descripcion)
+    addItemToCart(title, price, imageSrc, descripcion);
+}
+
+//actualizar btnsAdd y btnsRemove
+const updateQuantityBtnsCart = () => {
+    let btnAdd = document.querySelectorAll(".btnAddProductCart");
+    let removeBtn = document.querySelectorAll(".btnRemoveProductCart");
+
+    btnAdd.forEach(button => button.addEventListener("click", addProductCart));
+    removeBtn.forEach(button => button.addEventListener("click", removeProductCart));
+}
+
+//funcion agregar producto al carrito
+const addProductCart = (e) => {
+    e.target.parentNode.children[1].value++;
+    e.target.parentNode.children[0].classList.remove("disable");
+}
+//funcion remover producto del carrito
+const removeProductCart = (e) => {
+    if(e.target.parentNode.children[1].value == 1){
+        e.target.classList.add("disable");
+        return;
+    };
+    e.target.classList.remove("disable");
+    e.target.parentNode.children[1].value--;
 }
 
 
@@ -168,9 +192,10 @@ function addItemToCart(title, price, imageSrc, descripcion) {
     const modalAdd2 = document.querySelector(".modalAdd2");
     const removeClass1 = () => modalAdd1.classList.remove("showModal");
     const removeClass2 = () => modalAdd2.classList.remove("showModal");
-    var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
-    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
-    var cartItemCuantity = cartItems.getElementsByClassName('cantidad')
+    var cartItems = document.getElementsByClassName('_carrito_container_products')[0];
+    var cartItemNames = cartItems.getElementsByClassName('cart-item-title');
+    var cartItemCuantity = cartItems.getElementsByClassName('cantidad');
+
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
 
@@ -181,10 +206,10 @@ function addItemToCart(title, price, imageSrc, descripcion) {
             modalAdd2.classList.add("showModal");
             modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
             setTimeout(removeClass2, 2000);
-            return
-
+            return;
         }
     }
+
     var cartRowContents = `
     <div class="_carrito_container_products_product">
                         <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
@@ -194,17 +219,20 @@ function addItemToCart(title, price, imageSrc, descripcion) {
                             <h4>${price}</h4>
                         </div>
                         <div class="_carrito_container_btns">
-                            <button class="btnRemoveProductCart">-</button>
+                            <button class="btnRemoveProductCart disable">-</button>
                             <input type="number" class="cantidad" value="1">
                             <button class="btnAddProductCart">+</button>
                         </div>
                     </div>
         `
-    cartRow.innerHTML = cartRowContents
-    cartItems.append(cartRow)
+    cartRow.innerHTML = cartRowContents;
+    cartItems.append(cartRow);
     modalAdd1.classList.add("showModal");
-    modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`
+    modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`;
+
+    updateQuantityBtnsCart();
 
     setTimeout(removeClass1, 2000);
-
 };
+
+
