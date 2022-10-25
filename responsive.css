@@ -10,8 +10,7 @@
         width: 100%;
     }
     ._carrito_container_products_product {
-        flex-wrap: wrap;
-        justify-content: end;
+        justify-content: space-between;
     }
 }
 
