@@ -41,6 +41,7 @@ window.addEventListener("scroll", closeOnScroll);
 
 const renderProduct = (product) => {
 
+
     const { id, name, precio, comentario, productImg } = product;
 
     return `
@@ -60,6 +61,7 @@ const renderProduct = (product) => {
        </div>
     </div>   
     `;
+
 };
 
 // Funcion que renderiza seccion popular, Cuando carga la page o cuando clickeo populares
@@ -119,10 +121,12 @@ const renderProducts = (e) => {
     resultsTitle.innerText = `${e.target.parentNode.id.toUpperCase()}`
     renderFilteredProducts(e.target.parentNode.id);
     e.target.parentNode.classList.add("active");
+
 };
 
 document.addEventListener("DOMcontentLoaded", renderPopular(_array_de_productos));
-categoryContainer.addEventListener("click", renderProducts)
+categoryContainer.addEventListener("click", renderProducts);
+categoryContainer.addEventListener("click", ready);
 
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
@@ -158,11 +162,12 @@ function addToCartClicked(event) {
 function addItemToCart(title, price, imageSrc, descripcion) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
-    const removeClass1 = () => modalAdd1.classList.remove("showModal");
 
 
     const modalAdd1 = document.querySelector(".modalAdd1");
     const modalAdd2 = document.querySelector(".modalAdd2");
+    const removeClass1 = () => modalAdd1.classList.remove("showModal");
+    const removeClass2 = () => modalAdd2.classList.remove("showModal");
     var cartItems = document.getElementsByClassName('_carrito_container_products')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     var cartItemCuantity = cartItems.getElementsByClassName('cantidad')
@@ -170,9 +175,8 @@ function addItemToCart(title, price, imageSrc, descripcion) {
         if (cartItemNames[i].innerText == title) {
 
             // Funcion que suma cantidad al elegir el mismo elemento
-            const removeClass2 = () => modalAdd2.classList.remove("showModal");
             const actualCuantity = cartItemCuantity[i].getAttribute('value');
-            const sumar = Number(actualCuantity) + 1
+            const sumar = Number(actualCuantity) + 1;
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
             modalAdd2.classList.add("showModal");
             modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
