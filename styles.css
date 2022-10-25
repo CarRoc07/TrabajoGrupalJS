@@ -306,7 +306,7 @@ header {
     height: 190px;
     cursor: pointer;
     margin: 5px;
-    z-index: 3;
+    z-index: 1;
 }
 
 ._categorias_container_opcion:hover {
@@ -608,6 +608,7 @@ input[type=number]::-webkit-outer-spin-button {
     transform: translateY(100%);
     transition: .8s;
     font-size: 20px;
+    z-index: 9;
 }
 
 .modalAdd2 span,
