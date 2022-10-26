@@ -156,7 +156,6 @@ function addToCartClicked(event) {
     var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src;
 
     addItemToCart(title, price, imageSrc, descripcion);
-    updateQuantityBtnsCart()
 }
 
 //actualizar btnsAdd y btnsRemove
@@ -167,7 +166,7 @@ const updateQuantityBtnsCart = () => {
     btnAdd.forEach(button => button.addEventListener("click", addProductCart));
     removeBtn.forEach(button => button.addEventListener("click", removeProductCart));
     var cartItemContainer = document.getElementsByClassName('cart-row')[0]
-    var cartRows = document.getElementsByClassName('_carrito_container_products_product')
+    var cartRows = cartItemContainer.getElementsByClassName('_carrito_container_products_product')
     var total = 0
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
@@ -180,8 +179,6 @@ const updateQuantityBtnsCart = () => {
     console.log(priceElement)
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = '$' + total
-        //actualizamos el monto del carrito 
 }
 
 //funcion agregar producto al carrito

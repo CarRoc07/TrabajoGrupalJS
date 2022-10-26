@@ -180,8 +180,6 @@ const updateQuantityBtnsCart = () => {
     console.log(priceElement)
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = '$' + total
-        //actualizamos el monto del carrito 
 }
 
 //funcion agregar producto al carrito

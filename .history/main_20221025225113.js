@@ -156,7 +156,6 @@ function addToCartClicked(event) {
     var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src;
 
     addItemToCart(title, price, imageSrc, descripcion);
-    updateQuantityBtnsCart()
 }
 
 //actualizar btnsAdd y btnsRemove
@@ -166,8 +165,8 @@ const updateQuantityBtnsCart = () => {
 
     btnAdd.forEach(button => button.addEventListener("click", addProductCart));
     removeBtn.forEach(button => button.addEventListener("click", removeProductCart));
-    var cartItemContainer = document.getElementsByClassName('cart-row')[0]
-    var cartRows = document.getElementsByClassName('_carrito_container_products_product')
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
     var total = 0
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
@@ -177,18 +176,14 @@ const updateQuantityBtnsCart = () => {
         var quantity = quantityElement.value
         total = total + (price * quantity)
     }
-    console.log(priceElement)
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = '$' + total
-        //actualizamos el monto del carrito 
 }
 
 //funcion agregar producto al carrito
 const addProductCart = (e) => {
         e.target.parentNode.children[1].value++;
         e.target.parentNode.children[0].classList.remove("disable");
-        updateQuantityBtnsCart()
     }
     //funcion remover producto del carrito
 const removeProductCart = (e) => {
@@ -198,7 +193,6 @@ const removeProductCart = (e) => {
     };
     e.target.classList.remove("disable");
     e.target.parentNode.children[1].value--;
-    updateQuantityBtnsCart()
 }
 
 
