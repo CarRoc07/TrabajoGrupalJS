@@ -18,6 +18,8 @@ const btnClose = document.querySelector("._carrito_btnClose");
 const btnClose2 = document.querySelector("._carrito_container_end_close");
 const cart = document.querySelector("._carrito");
 const overlay = document.querySelector(".overlay");
+const comprar = document.querySelector(".comprar");
+
 
 
 const openAndCloseCart = () => {
@@ -177,7 +179,6 @@ const updateQuantityBtnsCart = () => {
         var quantity = quantityElement.value
         total = total + (price * quantity)
     }
-    console.log(priceElement)
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
     document.getElementsByClassName('cart-subtotal-price')[0].innerText = '$' + total
@@ -188,7 +189,12 @@ const updateQuantityBtnsCart = () => {
 const addProductCart = (e) => {
         e.target.parentNode.children[1].value++;
         e.target.parentNode.children[0].classList.remove("disable");
+        // actualizarCantidad()
+        // var found = objetosEnCarritoLS.find(e => e.titulo == title);
+        // found.cantidad = sumar
+        // saveLocalStorage(objetosEnCarrito);
         updateQuantityBtnsCart()
+
     }
     //funcion remover producto del carrito
 const removeProductCart = (e) => {
@@ -199,6 +205,10 @@ const removeProductCart = (e) => {
     e.target.classList.remove("disable");
     e.target.parentNode.children[1].value--;
     updateQuantityBtnsCart()
+}
+const actualizarCantidad = (title) => {
+    var found = objetosEnCarritoLS.find(e => e.titulo == e.target.parentNode);
+    found.cantidad = e.target.parentNode.children[1].value;
 }
 
 
@@ -317,9 +327,28 @@ const mostrarLS = (e) => {
 
 }
 
+
+let compras = () => {
+    const removeClass3 = () => modalAdd3.classList.remove("showModal");
+    const modalAdd3 = document.querySelector(".modalAdd3");
+
+    alert("¿Desea confirmar la compra?")
+    objetosEnCarrito = []
+    objetosEnCarritoLS = objetosEnCarrito
+    saveLocalStorage(objetosEnCarrito);
+    const products = document.getElementsByClassName('_carrito_container_products')
+    products[0].innerHTML = ""
+    modalAdd3.classList.add("showModal");
+    modalAdd3.innerHTML = `Compra realizada exitosamente`;
+    setTimeout(removeClass3, 2000);
+
+
+}
+comprar.addEventListener("click", compras);
+
 const init = () => {
     objetosEnCarritoLS.forEach(e => mostrarLS(e))
-    objetosEnCarrito = objetosEnCarritoLS
+    objetosEnCarrito = objetosEnCarritoLS;
 
 }
 init()

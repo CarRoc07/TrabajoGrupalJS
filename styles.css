@@ -596,7 +596,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .modalAdd1,
-.modalAdd2 {
+.modalAdd2,
+.modalAdd3 {
     display: flex;
     position: fixed;
     height: 40px;
@@ -609,7 +610,7 @@ input[type=number]::-webkit-outer-spin-button {
     transform: translateY(100%);
     transition: .8s;
     font-size: 20px;
-    z-index: 9;
+    z-index: 100;
 }
 
 .modalAdd2 span,
@@ -621,6 +622,7 @@ input[type=number]::-webkit-outer-spin-button {
 .showModal {
     transform: translateY(-100%);
     transition: .8s;
+    z-index: 15;
 }
 
 .disable {
