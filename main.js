@@ -224,6 +224,12 @@ function addItemToCart(title, price, imageSrc, descripcion) {
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
             modalAdd2.classList.add("showModal");
             modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
+            var found = objetosEnCarritoLS.find(e => e.titulo == title);
+            found.cantidad = sumar
+            saveLocalStorage(objetosEnCarritoLS);
+
+            // const modif = (found) => { found.defineProperty(this, "cantidad", "3") }
+            // modif(found)
             setTimeout(removeClass2, 2000);
             return;
         }
@@ -259,12 +265,13 @@ function addItemToCart(title, price, imageSrc, descripcion) {
 // Función crear array de objetos en carrito
 var objetosEnCarrito = [];
 
-function crearObjeto(title, price, imageSrc, descripcion) {
+function crearObjeto(title, price, imageSrc, descripcion, quantity) {
     var objeto = {
         titulo: title,
         precio: price,
         imagen: imageSrc,
-        descripction: descripcion
+        descripction: descripcion,
+        cantidad: quantity
     }
     objetosEnCarrito[objetosEnCarrito.length] = objeto;
 }
@@ -279,6 +286,7 @@ const mostrarLS = (e) => {
     const price = e.precio
     const imageSrc = e.imagen
     const descripcion = e.description
+    const quantity = e.cantidad
     var cartItems = document.getElementsByClassName('_carrito_container_products')[0];
     var cartRow = document.createElement('div')
     cartItems.append(cartRow);
@@ -293,7 +301,7 @@ const mostrarLS = (e) => {
                         </div>
                         <div class="_carrito_container_btns">
                             <button class="btnRemoveProductCart disable">-</button>
-                            <input type="number" class="cantidad" value="1">
+                            <input type="number" class="cantidad" value=${quantity}>
                             <button class="btnAddProductCart">+</button>
                         </div>
                     </div>
@@ -304,6 +312,7 @@ const mostrarLS = (e) => {
 
 const init = () => {
     objetosEnCarritoLS.forEach(e => mostrarLS(e))
+    objetosEnCarrito = objetosEnCarritoLS
 
 }
 init()
