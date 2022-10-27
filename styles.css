@@ -187,7 +187,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    padding: 0px 50px;
+    padding: 0px 20px;
 }
 
 ._recomendacion_container_pizza,
@@ -203,6 +203,7 @@ header {
     padding: 20px 15px;
     box-shadow: 0px 0px 50px rgba(1, 2, 7, 0.5);
     min-width: 290px;
+    box-sizing: content-box;
 }
 
 ._recomendacion_container_pizza div {
@@ -260,8 +261,6 @@ header {
     position: relative;
     left: 3%;
 }
-
-
 
 
 /* Categorias */

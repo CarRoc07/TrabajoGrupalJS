@@ -42,7 +42,7 @@ window.addEventListener("scroll", closeOnScroll);
 const renderProduct = (product) => {
 
 
-    const { id, name, precio, comentario, productImg, quantity } = product;
+    const { id, name, precio, comentario, productImg } = product;
 
     return `
     <div class="_results_container_output">
@@ -202,7 +202,7 @@ const removeProductCart = (e) => {
 }
 
 
-function addItemToCart(title, price, imageSrc, descripcion, cantidad) {
+function addItemToCart(title, price, imageSrc, descripcion) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
 
@@ -224,13 +224,6 @@ function addItemToCart(title, price, imageSrc, descripcion, cantidad) {
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
             modalAdd2.classList.add("showModal");
             modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
-            var found = objetosEnCarritoLS.find(e => e.titulo == title);
-            found.cantidad = sumar
-            saveLocalStorage(objetosEnCarrito);
-
-
-            // const modif = (found) => { found.defineProperty(this, "cantidad", "3") }
-            // modif(found)
             setTimeout(removeClass2, 2000);
             return;
         }
@@ -246,80 +239,17 @@ function addItemToCart(title, price, imageSrc, descripcion, cantidad) {
                         </div>
                         <div class="_carrito_container_btns">
                             <button class="btnRemoveProductCart disable">-</button>
-                            <input type="number" class="cantidad" value=1>
+                            <input type="number" class="cantidad" value="1">
                             <button class="btnAddProductCart">+</button>
                         </div>
                     </div>
         `
     cartRow.innerHTML = cartRowContents;
     cartItems.append(cartRow);
-    crearObjeto(title, price, imageSrc, descripcion, cantidad);
-    saveLocalStorage(objetosEnCarrito);
-    objetosEnCarritoLS = objetosEnCarrito
-
-
-    // objetosEnCarritoLS.forEach(e => mostrarLS(e))
-
     modalAdd1.classList.add("showModal");
     modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`;
-
 
     updateQuantityBtnsCart();
 
     setTimeout(removeClass1, 2000);
 };
-// Función crear array de objetos en carrito
-var objetosEnCarrito = [];
-
-function crearObjeto(title, price, imageSrc, descripcion) {
-    var objeto = {
-        titulo: title,
-        precio: price,
-        imagen: imageSrc,
-        descripction: descripcion,
-        cantidad: 1
-    }
-    objetosEnCarrito[objetosEnCarrito.length] = objeto;
-}
-
-// Ese array de objetos en el carrito  se guarda en el LS
-const saveLocalStorage = (objetosEnCarrito) => localStorage.setItem('objetosEnCarritoLS', JSON.stringify(objetosEnCarrito));
-// Recupero el array del LS para mostrar el carrido en el init()
-let objetosEnCarritoLS = JSON.parse(localStorage.getItem('objetosEnCarritoLS'));
-// Muestro los objetos de LS en el carrito
-const mostrarLS = (e) => {
-    const title = e.titulo
-    const price = e.precio
-    const imageSrc = e.imagen
-    const descripcion = e.description
-    const cantidad = Number(e.cantidad)
-    var cartItems = document.getElementsByClassName('_carrito_container_products')[0];
-    var cartRow = document.createElement('div')
-    cartItems.append(cartRow);
-    cartRow.classList.add('cart-row')
-    var cartRowContents = `
-    <div class="_carrito_container_products_product">
-                        <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
-                        <div>
-                            <h5  class="cart-item-title">${title}</h5>
-                            <p>${descripcion}</p>
-                            <h4 class="cart-price">${price}</h4>
-                        </div>
-                        <div class="_carrito_container_btns">
-                            <button class="btnRemoveProductCart disable">-</button>
-                            <input type="number" class="cantidad" value=${cantidad}>
-                            <button class="btnAddProductCart">+</button>
-                        </div>
-                    </div>
-        `
-    cartRow.innerHTML = cartRowContents;
-
-
-}
-
-const init = () => {
-    objetosEnCarritoLS.forEach(e => mostrarLS(e))
-    objetosEnCarrito = objetosEnCarritoLS
-
-}
-init()
