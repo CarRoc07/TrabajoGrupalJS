@@ -338,6 +338,8 @@ let compras = () => {
     saveLocalStorage(objetosEnCarrito);
     const products = document.getElementsByClassName('_carrito_container_products')
     products[0].innerHTML = ""
+    updateQuantityBtnsCart()
+
     modalAdd3.classList.add("showModal");
     modalAdd3.innerHTML = `Compra realizada exitosamente`;
     setTimeout(removeClass3, 2000);
