@@ -212,7 +212,7 @@ function addItemToCart(title, price, imageSrc, descripcion) {
 
     var cartRowContents = `
     <div class="_carrito_container_products_product">
-                        <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
+                        <img src="${imageSrc}" alt="${title}" class="_recomendacion_container_pizza_img">
                         <div>
                             <h5  class="cart-item-title">${title}</h5>
                             <p>${descripcion}</p>
