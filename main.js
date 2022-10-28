@@ -349,6 +349,6 @@ comprar.addEventListener("click", compras);
 const init = () => {
     objetosEnCarritoLS.forEach(e => mostrarLS(e))
     objetosEnCarrito = objetosEnCarritoLS;
-
+    updateQuantityBtnsCart()
 }
 init()
