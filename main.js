@@ -332,19 +332,22 @@ let compras = () => {
     const removeClass3 = () => modalAdd3.classList.remove("showModal");
     const modalAdd3 = document.querySelector(".modalAdd3");
 
-    alert("¿Desea confirmar la compra?")
-    objetosEnCarrito = []
-    objetosEnCarritoLS = objetosEnCarrito
-    saveLocalStorage(objetosEnCarrito);
-    const products = document.getElementsByClassName('_carrito_container_products')
-    products[0].innerHTML = ""
-    updateQuantityBtnsCart()
-
-    modalAdd3.classList.add("showModal");
-    modalAdd3.innerHTML = `Compra realizada exitosamente`;
-    setTimeout(removeClass3, 2000);
 
 
+    const accept = () => {
+        objetosEnCarrito = []
+        objetosEnCarritoLS = objetosEnCarrito
+        saveLocalStorage(objetosEnCarrito);
+        const products = document.getElementsByClassName('_carrito_container_products')
+        products[0].innerHTML = ""
+        updateQuantityBtnsCart()
+
+        modalAdd3.classList.add("showModal");
+        modalAdd3.innerHTML = `Compra realizada exitosamente`;
+        setTimeout(removeClass3, 2000);
+    }
+
+    window.confirm("¿Desea confirmar la compra?") ? accept() : null;
 }
 comprar.addEventListener("click", compras);
 
