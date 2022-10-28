@@ -18,8 +18,6 @@ const btnClose = document.querySelector("._carrito_btnClose");
 const btnClose2 = document.querySelector("._carrito_container_end_close");
 const cart = document.querySelector("._carrito");
 const overlay = document.querySelector(".overlay");
-const comprar = document.querySelector(".comprar");
-
 
 
 const openAndCloseCart = () => {
@@ -44,7 +42,7 @@ window.addEventListener("scroll", closeOnScroll);
 const renderProduct = (product) => {
 
 
-    const { id, name, precio, comentario, productImg, quantity } = product;
+    const { id, name, precio, comentario, productImg } = product;
 
     return `
     <div class="_results_container_output">
@@ -158,7 +156,6 @@ function addToCartClicked(event) {
     var imageSrc = shopItem.getElementsByClassName('_recomendacion_container_pizza_img')[0].src;
 
     addItemToCart(title, price, imageSrc, descripcion);
-    updateQuantityBtnsCart()
 }
 
 //actualizar btnsAdd y btnsRemove
@@ -168,8 +165,8 @@ const updateQuantityBtnsCart = () => {
 
     btnAdd.forEach(button => button.addEventListener("click", addProductCart));
     removeBtn.forEach(button => button.addEventListener("click", removeProductCart));
-    var cartItemContainer = document.getElementsByClassName('cart-row')[0]
-    var cartRows = document.getElementsByClassName('_carrito_container_products_product')
+    var cartItemContainer = document.getElementsByClassName('_carrito_container_products_product')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
     var total = 0
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
@@ -181,20 +178,13 @@ const updateQuantityBtnsCart = () => {
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = '$' + total
-        //actualizamos el monto del carrito 
 }
 
 //funcion agregar producto al carrito
 const addProductCart = (e) => {
         e.target.parentNode.children[1].value++;
         e.target.parentNode.children[0].classList.remove("disable");
-        // actualizarCantidad()
-        // var found = objetosEnCarritoLS.find(e => e.titulo == title);
-        // found.cantidad = sumar
-        // saveLocalStorage(objetosEnCarrito);
         updateQuantityBtnsCart()
-
     }
     //funcion remover producto del carrito
 const removeProductCart = (e) => {
@@ -206,13 +196,9 @@ const removeProductCart = (e) => {
     e.target.parentNode.children[1].value--;
     updateQuantityBtnsCart()
 }
-const actualizarCantidad = (title) => {
-    var found = objetosEnCarritoLS.find(e => e.titulo == e.target.parentNode);
-    found.cantidad = e.target.parentNode.children[1].value;
-}
 
 
-function addItemToCart(title, price, imageSrc, descripcion, cantidad) {
+function addItemToCart(title, price, imageSrc, descripcion) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
 
@@ -234,79 +220,11 @@ function addItemToCart(title, price, imageSrc, descripcion, cantidad) {
             cartItemCuantity[i].setAttribute(`value`, `${sumar}`);
             modalAdd2.classList.add("showModal");
             modalAdd2.innerHTML = `Se sumó otro <span> ${title} </span> al carrito de compras`
-            var found = objetosEnCarritoLS.find(e => e.titulo == title);
-            found.cantidad = sumar
-            saveLocalStorage(objetosEnCarrito);
-
-
-            // const modif = (found) => { found.defineProperty(this, "cantidad", "3") }
-            // modif(found)
             setTimeout(removeClass2, 2000);
             return;
         }
     }
 
-    var cartRowContents = `
-    <div class="_carrito_container_products_product">
-                        <img src="${imageSrc}" alt="${title}" class="_recomendacion_container_pizza_img">
-                        <div>
-                            <h5  class="cart-item-title">${title}</h5>
-                            <p>${descripcion}</p>
-                            <h4 class="cart-price">${price}</h4>
-                        </div>
-                        <div class="_carrito_container_btns">
-                            <button class="btnRemoveProductCart disable">-</button>
-                            <input type="number" class="cantidad" value=1>
-                            <button class="btnAddProductCart">+</button>
-                        </div>
-                    </div>
-        `
-    cartRow.innerHTML = cartRowContents;
-    cartItems.append(cartRow);
-    crearObjeto(title, price, imageSrc, descripcion, cantidad);
-    saveLocalStorage(objetosEnCarrito);
-    objetosEnCarritoLS = objetosEnCarrito
-
-
-    // objetosEnCarritoLS.forEach(e => mostrarLS(e))
-
-    modalAdd1.classList.add("showModal");
-    modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`;
-
-
-    updateQuantityBtnsCart();
-
-    setTimeout(removeClass1, 2000);
-};
-// Función crear array de objetos en carrito
-var objetosEnCarrito = [];
-
-function crearObjeto(title, price, imageSrc, descripcion) {
-    var objeto = {
-        titulo: title,
-        precio: price,
-        imagen: imageSrc,
-        descripction: descripcion,
-        cantidad: 1
-    }
-    objetosEnCarrito[objetosEnCarrito.length] = objeto;
-}
-
-// Ese array de objetos en el carrito  se guarda en el LS
-const saveLocalStorage = (objetosEnCarrito) => localStorage.setItem('objetosEnCarritoLS', JSON.stringify(objetosEnCarrito));
-// Recupero el array del LS para mostrar el carrido en el init()
-let objetosEnCarritoLS = JSON.parse(localStorage.getItem('objetosEnCarritoLS'));
-// Muestro los objetos de LS en el carrito
-const mostrarLS = (e) => {
-    const title = e.titulo
-    const price = e.precio
-    const imageSrc = e.imagen
-    const descripcion = e.description
-    const cantidad = Number(e.cantidad)
-    var cartItems = document.getElementsByClassName('_carrito_container_products')[0];
-    var cartRow = document.createElement('div')
-    cartItems.append(cartRow);
-    cartRow.classList.add('cart-row')
     var cartRowContents = `
     <div class="_carrito_container_products_product">
                         <img src="${imageSrc}" alt="Pizza recomendada 1" class="_recomendacion_container_pizza_img">
@@ -317,43 +235,17 @@ const mostrarLS = (e) => {
                         </div>
                         <div class="_carrito_container_btns">
                             <button class="btnRemoveProductCart disable">-</button>
-                            <input type="number" class="cantidad" value=${cantidad}>
+                            <input type="number" class="cantidad" value="1">
                             <button class="btnAddProductCart">+</button>
                         </div>
                     </div>
         `
     cartRow.innerHTML = cartRowContents;
+    cartItems.append(cartRow);
+    modalAdd1.classList.add("showModal");
+    modalAdd1.innerHTML = `Se agregó un <span> ${title} </span> al carrito de compras`;
 
+    updateQuantityBtnsCart();
 
-}
-
-
-let compras = () => {
-    const removeClass3 = () => modalAdd3.classList.remove("showModal");
-    const modalAdd3 = document.querySelector(".modalAdd3");
-
-
-
-    const accept = () => {
-        objetosEnCarrito = []
-        objetosEnCarritoLS = objetosEnCarrito
-        saveLocalStorage(objetosEnCarrito);
-        const products = document.getElementsByClassName('_carrito_container_products')
-        products[0].innerHTML = ""
-        updateQuantityBtnsCart()
-
-        modalAdd3.classList.add("showModal");
-        modalAdd3.innerHTML = `Compra realizada exitosamente`;
-        setTimeout(removeClass3, 2000);
-    }
-
-    window.confirm("¿Desea confirmar la compra?") ? accept() : null;
-}
-comprar.addEventListener("click", compras);
-
-const init = () => {
-    objetosEnCarritoLS.forEach(e => mostrarLS(e))
-    objetosEnCarrito = objetosEnCarritoLS;
-    updateQuantityBtnsCart()
-}
-init()
+    setTimeout(removeClass1, 2000);
+};

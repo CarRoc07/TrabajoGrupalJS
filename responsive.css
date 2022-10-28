@@ -16,6 +16,12 @@
     .modalAdd2 {
         font-size: 15px;
     }
+    ._categorias {
+        padding: 10px;
+    }
+    ._results_container {
+        padding: 20px;
+    }
 }
 
 @media screen and (min-width:767px) and (max-width: 1023px) {}
